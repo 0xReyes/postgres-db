@@ -1,10 +1,10 @@
 -- V3__cleanup_expired_data.sql
+-- Non-destructive follow-up migration: add focused indexes for token/code lifecycle queries.
 
-DELETE FROM authorization_codes
-WHERE expires_at < NOW() OR used_at IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_authorization_codes_used_at
+    ON authorization_codes(used_at)
+    WHERE used_at IS NOT NULL;
 
-DELETE FROM sessions
-WHERE expires_at < NOW();
-
-DELETE FROM refresh_tokens
-WHERE expires_at < NOW() OR revoked_at IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_refresh_tokens_revoked_at
+    ON refresh_tokens(revoked_at)
+    WHERE revoked_at IS NOT NULL;
