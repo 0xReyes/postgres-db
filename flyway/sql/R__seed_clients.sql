@@ -16,7 +16,7 @@ VALUES
         'public-web',
         NULL,
         'Public Web App',
-        '["http://localhost:3000/callback","http://127.0.0.1:3000/callback","https://mkpnpkpaenljpmodfopelfgdmgnijlih.chromiumapp.org/oidc"]',
+        '["http://localhost:3000/callback","http://127.0.0.1:3000/callback","https://mkpnpkpaenljpmodfopelfgdmgnijlih.chromiumapp.org/oidc", "https://mkpnpkpaenljpmodfopelfgdmgnijlih.chromiumapp.org/app.html"]',
         'openid profile email offline_access',
         FALSE,
         NOW()
